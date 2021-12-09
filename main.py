@@ -10,7 +10,9 @@ cursor = database.cursor()
 # Returns if table already exist with said name
 def doesTableExist(tableName):
     cursor.execute('show tables')
-    for table in cursor:
+    
+    tables = cursor.fetchall()
+    for table in tables:
         if table[0].decode() == tableName:
             return True
         
@@ -19,10 +21,10 @@ def doesTableExist(tableName):
 # Prints all data within table
 def printData(tableName):
     cursor.execute('select * from %s' % tableName)
-
-    for data in cursor:
-        print("Name: %-80s Price: %-10s" % (data[0], data[1]))
-        print("===")
+    rows = cursor.fetchall()
+    
+    for row in rows:
+        print("Name: %-80s Price: %-10s" % (row[0], row[1]))
 
 def main():
 
