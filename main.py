@@ -24,7 +24,8 @@ def printData(tableName):
     rows = cursor.fetchall()
     
     for row in rows:
-        print("Name: %-80s Price: %-10s" % (row[0], row[1]))
+        print("Name: %-120s Price: %-10s" % (row[0], row[1]))
+        print('===========================================================')
 
 def main():
 
